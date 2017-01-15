@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "joz.spekdemo"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    kapt "com.android.databinding:compiler:$databinding_compiler_version"
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile "io.reactivex:rxjava:1.2.4"
+    compile "io.reactivex:rxandroid:1.2.1"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.jetbrains.spek:spek-api:1.1.0-beta3'
+    testCompile 'org.jetbrains.spek:spek-junit-platform-engine:1.1.0-beta3'
+    testCompile 'org.junit.platform:junit-platform-runner:1.0.0-M3'
+    testCompile 'org.mockito:mockito-core:2.5.0'
+    testCompile "com.nhaarman:mockito-kotlin:1.1.0"
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
+repositories {
+    mavenCentral()
+}
+
+kapt {
+    generateStubs = true
+}

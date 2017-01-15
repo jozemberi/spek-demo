@@ -1,0 +1,26 @@
+
+buildscript {
+
+    ext {
+        kotlin_version = '1.0.6'
+        databinding_compiler_version = '2.2.3'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "http://dl.bintray.com/jetbrains/spek" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

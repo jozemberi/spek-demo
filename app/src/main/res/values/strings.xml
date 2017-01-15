@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SpekDemo</string>
+    <string name="login_title">Login</string>
+    <string name="login_cta">Press the button</string>
+    <string name="main_text">You are fake logged in</string>
+    <string name="error_login">Ooops, something went wrong!</string>
+</resources>
